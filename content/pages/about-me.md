@@ -2,8 +2,8 @@
 type: "page"
 path: "/about-me"
 title: "About Me"
-description: ""
-date: "2019-12-24"
+metaDescription: "Hi! I'm Jason Merino. I'm a software engineer learning new things every day."
+metaTitle: "A little information about me"
 ---
 
 I am a senior innovation developer in the [Ferguson Ventures](https://fergusonventures.com/) Innovation Lab. I am currently working on prototypes in AR, Voice, and native with [React Native](https://facebook.github.io/react-native/). I love to learn new things and play around with new technology.
