@@ -53,13 +53,24 @@ const PageTemplate: FC<Props> = ({
   metaTitle,
   metaDescription,
 }) => {
+  const url = `https://jasonmerino.me${path}`;
   return (
     <>
       <Head>
         <title>{metaTitle} | Jason Merino (.me)</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content={metaDescription} />
-        <link rel="canonical" href={`https://jasonmerino.me${path}`} />
+        <link rel="canonical" href={url} />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={url} />
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:description" content={metaDescription} />
+        <meta property="og:site_name" content="JasonMerino.me" />
+        <meta
+          property="og:image"
+          content={`https://jasonmerino.me/default-og-image.png`}
+        />
       </Head>
       <div>
         <h1>{title}</h1>
