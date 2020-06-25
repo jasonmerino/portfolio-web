@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import marked from "marked";
 import Head from "next/head";
 import { FC } from "react";
+import { config } from "../config";
 
 const getPageData = (page: string) => {
   const markdown = fs.readFileSync(`./content/pages/${page}`, "utf-8");
@@ -53,7 +54,7 @@ const PageTemplate: FC<Props> = ({
   metaTitle,
   metaDescription,
 }) => {
-  const url = `https://jasonmerino.me${path}`;
+  const url = `${config.topLevelDomain}${path}`;
   return (
     <>
       <Head>
@@ -69,7 +70,7 @@ const PageTemplate: FC<Props> = ({
         <meta property="og:site_name" content="JasonMerino.me" />
         <meta
           property="og:image"
-          content={`https://jasonmerino.me/default-og-image.png`}
+          content={`${config.topLevelDomain}/default-og-image.png`}
         />
       </Head>
       <div>
