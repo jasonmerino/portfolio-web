@@ -1,22 +1,15 @@
 import fs from "fs";
 import { GetStaticPaths } from "next";
-import matter from "gray-matter";
-import marked from "marked";
 import Head from "next/head";
 import { FC } from "react";
 import { config } from "../config";
-
-const getPageData = (page: string) => {
-  const markdown = fs.readFileSync(`./content/pages/${page}`, "utf-8");
-  const { content, data } = matter(markdown);
-  return { data, content };
-};
+import { parseMarkdownFile } from "../utils/markdown";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const pagesDir = fs.readdirSync("./content/pages");
   return {
     paths: pagesDir.map((page) => {
-      const { data } = getPageData(page);
+      const { data } = parseMarkdownFile(`./content/pages/${page}`);
       return data.path;
     }),
     fallback: false,
@@ -25,13 +18,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = (context) => {
   const {
-    content,
+    htmlContent,
     data: { title, metaDescription, metaTitle, path },
-  } = getPageData(`${context.params.page}.md`);
+  } = parseMarkdownFile(`./content/pages/${context.params.page}.md`);
   return {
     props: {
       path,
-      content,
+      htmlContent,
       title,
       metaDescription,
       metaTitle,
@@ -41,14 +34,14 @@ export const getStaticProps = (context) => {
 
 interface Props {
   path: string;
-  content: string;
+  htmlContent: string;
   title: string;
   metaDescription: string;
   metaTitle: string;
 }
 
 const PageTemplate: FC<Props> = ({
-  content,
+  htmlContent,
   title,
   path,
   metaTitle,
@@ -75,7 +68,7 @@ const PageTemplate: FC<Props> = ({
       </Head>
       <div>
         <h1>{title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: marked(content) }} />
+        <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
       </div>
     </>
   );
