@@ -1,8 +1,9 @@
 ---
 type: "article"
-path: "/articles/react-native-simple-store"
+path: "/react-native-simple-store"
 title: "React Native Simple Store"
-description: ""
+metaTitle: ""
+metaDescription: ""
 date: "2015-10-09"
 twitterImage: ""
 ---
@@ -20,36 +21,36 @@ It has four simple methods .save, .get, .update, and .delete. It automatical
 Here is some sample usage of the library.
 
 ```js
-var store = require("react-native-simple-store")
+var store = require("react-native-simple-store");
 
 store
   .save("coffee", {
     isAwesome: true,
   })
   .then(() => {
-    return store.get("coffee").then(coffee => {
-      console.log(coffee.isAwesome === true) // true
-    })
+    return store.get("coffee").then((coffee) => {
+      console.log(coffee.isAwesome === true); // true
+    });
   })
   .then(() => {
     return store.update("coffee", {
       isNotEssential: false,
-    })
+    });
   })
   .then(() => {
-    return store.get("coffee")
+    return store.get("coffee");
   })
-  .then(coffee => {
-    console.log(coffee.isNotEssential === false) // true
-    console.log(coffee.isAwesome === true) // true
+  .then((coffee) => {
+    console.log(coffee.isNotEssential === false); // true
+    console.log(coffee.isAwesome === true); // true
 
-    return store.delete("coffee")
+    return store.delete("coffee");
   })
   .then(() => {
-    store.get("coffee").then(coffee => {
-      console.log(coffee === null) // true
-    })
-  })
+    store.get("coffee").then((coffee) => {
+      console.log(coffee === null); // true
+    });
+  });
 ```
 
 The react-native-simple-store is delightfully easy to use with a completely understandable API. Hope you enjoy using it. Feel free to drop any suggestions or problems you find in [issues section of the repo](https://github.com/jasonmerino/react-native-simple-store/issues).

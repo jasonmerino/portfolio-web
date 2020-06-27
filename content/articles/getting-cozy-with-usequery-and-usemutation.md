@@ -1,8 +1,9 @@
 ---
 type: "article"
-path: "/articles/getting-cozy-with-usequery-and-usemutation"
+path: "/getting-cozy-with-usequery-and-usemutation"
 title: "Getting Cozy with useQuery and useMutation"
-description: ""
+metaTitle: ""
+metaDescription: ""
 date: "2019-09-20"
 twitterImage: ""
 ---
@@ -41,10 +42,10 @@ const Item = () => (
           {error && <div>There was an error.</div>}
           {data && <div>Render content here</div>}
         </>
-      )
+      );
     }}
   </Query>
-)
+);
 ```
 
 In the example above the render props function makes understanding your components rendered output a little harder to grasp.
@@ -53,15 +54,15 @@ The new way of querying in Apollo makes understanding how queried data fits into
 
 ```jsx
 const Item = () => {
-  const { loading, error, data } = useQuery(MY_QUERY)
+  const { loading, error, data } = useQuery(MY_QUERY);
   return (
     <>
       {loading && <div>Loading...</div>}
       {error && <div>There was an error.</div>}
       {data && <div>Render content here</div>}
     </>
-  )
-}
+  );
+};
 ```
 
 With the new useQuery hook, you can see clearly what code is responsible for fetching data and what code is responsible for rendering UI. The new code is much easier to read and understand than the previous way of querying GraphQL data.
@@ -76,21 +77,21 @@ The old way of doing GraphQL mutations with Apollo in React was similar to the w
 const Item = () => {
   return (
     <Mutation mutation={MY_MUTATION}>
-      {mutate => {
-        return <button onClick={mutate}>Do mutation</button>
+      {(mutate) => {
+        return <button onClick={mutate}>Do mutation</button>;
       }}
     </Mutation>
-  )
-}
+  );
+};
 ```
 
 The example above gets the job done, but it is verbose and difficult to read. With the new way of mutating GraphQL data with React hooks is much simpler. Here's what the previous example looks like when you re-write it with the useMutation hook:
 
 ```jsx
 const Item = () => {
-  const mutation = useMutation(MY_MUTATION)
-  return <button onClick={mutate}>Do mutation</button>
-}
+  const mutation = useMutation(MY_MUTATION);
+  return <button onClick={mutate}>Do mutation</button>;
+};
 ```
 
 That's much better! It's amazing how this change in the mutation API cleans up our code so much!

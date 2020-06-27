@@ -1,8 +1,9 @@
 ---
 type: "article"
-path: "/articles/how-to-make-an-app-with-react-native-4-the-search-results-page"
+path: "/how-to-make-an-app-with-react-native-4-the-search-results-page"
 title: "How to Make an App With React Native IV: The Search Results Page"
-description: "In part four of the how to make an app with React Native series, we cover adding an explore component and navigating to a new search results screen."
+metaTitle: ""
+metaDescription: "In part four of the how to make an app with React Native series, we cover adding an explore component and navigating to a new search results screen."
 date: "2020-05-14"
 draft: false
 twitterImage: "/social-images/twitter-how-to-make-an-app-with-react-native-part-4.png"
@@ -27,7 +28,7 @@ So, the first thing we'll be doing based on this information is to store these c
 ```ts
 // constants.ts
 
-import { ICategoryItem } from "./types/categories.types"
+import { ICategoryItem } from "./types/categories.types";
 
 export const categories: ICategoryItem[] = [
   { text: "Backgrounds", image: require("./images/backgrounds-category.jpg") },
@@ -53,7 +54,7 @@ export const categories: ICategoryItem[] = [
   { text: "Buildings", image: require("./images/buildings-category.jpg") },
   { text: "Business", image: require("./images/business-category.jpg") },
   { text: "Music", image: require("./images/music-category.jpg") },
-]
+];
 ```
 
 Along with this file, we'll need to create a category item type for use here and later when we render categories in the explore section. Add this code to a file at `types/categories.types.ts`
@@ -62,8 +63,8 @@ Along with this file, we'll need to create a category item type for use here and
 // types/categories.types.ts
 
 export interface ICategoryItem {
-  text: string
-  image: number
+  text: string;
+  image: number;
 }
 ```
 
@@ -72,20 +73,20 @@ Now that we have the categories in a safe place and some type definitions to go 
 ```ts
 // components/explore.component.tsx
 
-import React from "react"
-import { Text } from "./text.component"
+import React from "react";
+import { Text } from "./text.component";
 import {
   TouchableWithoutFeedback,
   FlatList,
   StyleSheet,
   View,
   ImageBackground,
-} from "react-native"
-import { deviceWidth, space1, space2 } from "../theme/space"
-import { useNavigation } from "@react-navigation/native"
-import { categories } from "../constants"
-import { SectionHeading } from "./section-heading.component"
-import { ICategoryItem } from "../types/categories.types"
+} from "react-native";
+import { deviceWidth, space1, space2 } from "../theme/space";
+import { useNavigation } from "@react-navigation/native";
+import { categories } from "../constants";
+import { SectionHeading } from "./section-heading.component";
+import { ICategoryItem } from "../types/categories.types";
 
 const styles = StyleSheet.create({
   container: {
@@ -109,10 +110,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-})
+});
 
 export const Explore = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   const renderCategory = ({ item }: { item: ICategoryItem }) => {
     return (
@@ -131,8 +132,8 @@ export const Explore = () => {
           </TouchableWithoutFeedback>
         </ImageBackground>
       </View>
-    )
-  }
+    );
+  };
 
   return (
     <View>
@@ -145,12 +146,12 @@ export const Explore = () => {
         showsHorizontalScrollIndicator={false}
         data={categories}
         renderItem={renderCategory}
-        keyExtractor={category => category.text}
+        keyExtractor={(category) => category.text}
         contentContainerStyle={styles.container}
       />
     </View>
-  )
-}
+  );
+};
 ```
 
 Now that's a lot of code! Let's go over what we've added in the file above. In the main render section of the code, we're returning a SectionHeading and FlatList component. In the FlatList we are telling it to take the category list we just created and use that as the `data` for the list. With each category item in the `categories` array, we're going to render something with what is returned from the `renderCategory` function.
@@ -173,10 +174,10 @@ Along with the addition of the Explore component we need to add a SectionHeading
 ```ts
 // components/section-heading.component.tsx
 
-import React, { FC } from "react"
-import { Text } from "./text.component"
-import { StyleSheet } from "react-native"
-import { space2, space1 } from "../theme/space"
+import React, { FC } from "react";
+import { Text } from "./text.component";
+import { StyleSheet } from "react-native";
+import { space2, space1 } from "../theme/space";
 
 const styles = StyleSheet.create({
   heading: {
@@ -184,15 +185,15 @@ const styles = StyleSheet.create({
     paddingTop: space2,
     paddingBottom: space1,
   },
-})
+});
 
 export const SectionHeading: FC = ({ children }) => {
   return (
     <Text weight="bold" size="large" style={styles.heading}>
       {children}
     </Text>
-  )
-}
+  );
+};
 ```
 
 We'll also need to add another entry for the `space2` variable in the `theme/space.ts` file.
@@ -229,14 +230,14 @@ And finally, we'll add the custom Text component in a new file at `components/te
 ```ts
 // components/text.component.tsx
 
-import React, { FC } from "react"
-import { Text as RNText, TextProps, TextStyle } from "react-native"
-import colors from "../theme/colors"
+import React, { FC } from "react";
+import { Text as RNText, TextProps, TextStyle } from "react-native";
+import colors from "../theme/colors";
 
 const sizes = {
   regular: 15,
   large: 17,
-}
+};
 
 interface IProps extends TextProps {
   weight?:
@@ -250,13 +251,13 @@ interface IProps extends TextProps {
     | "600"
     | "700"
     | "800"
-    | "900"
-  color?: keyof typeof colors
-  size?: keyof typeof sizes
+    | "900";
+  color?: keyof typeof colors;
+  size?: keyof typeof sizes;
 }
 
-export const Text: FC<IProps> = props => {
-  const { weight, color, size, ...textProps } = props
+export const Text: FC<IProps> = (props) => {
+  const { weight, color, size, ...textProps } = props;
   const style: TextStyle[] = [
     {
       fontWeight: weight || "normal",
@@ -264,10 +265,10 @@ export const Text: FC<IProps> = props => {
       fontSize: sizes[size || "regular"],
     },
     props.style as TextStyle,
-  ]
+  ];
 
-  return <RNText {...textProps} style={style} />
-}
+  return <RNText {...textProps} style={style} />;
+};
 ```
 
 All we're doing in this file is setting up default styling for the text component so that we can get consistent text styles across the whole application. You'll notice that before we declare the `style` variable in the function component we pull out the `weight`, `color`, and `size` props. We want to make sure that we still provide a way to customize the React Native Text component with all the standard props, so after we pull out our custom props we spread the rest onto the RNText component. If you're confused about what's going on with separating out our props from the RNText component props, you can [read about using the ES7 object rest operator to omit object properties](https://codeburst.io/use-es2015-object-rest-operator-to-omit-properties-38a3ecffe90).
@@ -281,18 +282,18 @@ The first thing we're going to do is to create a new file at `screens/results.sc
 ```ts
 // screens/results.screen.tsx
 
-import React, { FC, useEffect } from 'react';
-import { Image } from '../components/image.component';
-import { IPhoto } from '../types/photos.types';
-import { FlatList } from 'react-native';
-import { photos, searchPhotos } from '../stores/photo.store';
-import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../types/navigator.types';
-import { Separator } from '../components/separator.component';
-import { observer } from 'mobx-react';
+import React, { FC, useEffect } from "react";
+import { Image } from "../components/image.component";
+import { IPhoto } from "../types/photos.types";
+import { FlatList } from "react-native";
+import { photos, searchPhotos } from "../stores/photo.store";
+import { useRoute, RouteProp, useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "../types/navigator.types";
+import { Separator } from "../components/separator.component";
+import { observer } from "mobx-react";
 
 export const Results: FC = observer(() => {
-  const { params } = useRoute<RouteProp<RootStackParamList, 'Results'>>();
+  const { params } = useRoute<RouteProp<RootStackParamList, "Results">>();
   const navigation = useNavigation();
 
   const renderPhoto = ({ item }: { item: IPhoto }) => {
@@ -348,21 +349,21 @@ export const searchPhotos = async ({
   keyword,
   category,
 }: {
-  keyword?: string
-  category?: string
+  keyword?: string;
+  category?: string;
 }) => {
-  let params = ""
+  let params = "";
   if (category) {
-    params += `&category=${category.toLowerCase()}`
+    params += `&category=${category.toLowerCase()}`;
   }
   if (keyword) {
-    params += `&q=${keyword}`
+    params += `&q=${keyword}`;
   }
-  const url = `${BASE_URL}/?key=${Config.PIXABAY_API_KEY}&safesearch=true&per_page=4${params}`
-  const response = await fetch(url)
-  const data = await response.json()
-  photos[keyword || "default"] = data.hits
-}
+  const url = `${BASE_URL}/?key=${Config.PIXABAY_API_KEY}&safesearch=true&per_page=4${params}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  photos[keyword || "default"] = data.hits;
+};
 ```
 
 And then also make sure your call to the `searchPhotos()` function in `screens/home.screen.tsx` reflects the argument signature changes we made. Basically all you have to do is pass in an empty object to appease TypeScript.
@@ -376,13 +377,13 @@ Now our Image component should look like this.
 ```ts
 // components/image.component.tsx
 
-import React, { FC } from "react"
-import { Image as Img, ImageStyle } from "react-native"
-import { deviceWidth } from "../theme/space"
-import { IPhoto } from "../types/photos.types"
+import React, { FC } from "react";
+import { Image as Img, ImageStyle } from "react-native";
+import { deviceWidth } from "../theme/space";
+import { IPhoto } from "../types/photos.types";
 
 interface IProps {
-  image: IPhoto
+  image: IPhoto;
 }
 
 export const Image: FC<IProps> = ({ image }) => {
@@ -394,8 +395,8 @@ export const Image: FC<IProps> = ({ image }) => {
         height: (deviceWidth / image.imageWidth) * image.imageHeight,
       }}
     />
-  )
-}
+  );
+};
 ```
 
 After these changes to the Image component, we'll also need to adjust the code that renders the images in `screens/home.screen.tsx`. Make these changes to the `renderPhoto` function.
@@ -423,20 +424,20 @@ To make the list of images in the search results page match how all lists of ima
 ```ts
 // components/separator.component.tsx
 
-import React from "react"
-import { View, StyleSheet } from "react-native"
-import { light1 } from "../theme/colors"
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import { light1 } from "../theme/colors";
 
 const styles = StyleSheet.create({
   separator: {
     height: 1,
     backgroundColor: light1,
   },
-})
+});
 
 export const Separator = () => {
-  return <View style={styles.separator} />
-}
+  return <View style={styles.separator} />;
+};
 ```
 
 ## Hooking the search results screen into the navigator
@@ -488,9 +489,9 @@ The `types/navigator.types.ts` file which exports the `RootStackParamList` shoul
 // types/navigator.types.ts
 
 export type RootStackParamList = {
-  Home: undefined
-  Results: { category: string }
-}
+  Home: undefined;
+  Results: { category: string };
+};
 ```
 
 After these changes, we should be able to tap on a category in the horizontally scrolling list and then be pushed over to a new screen with the category name in the navigation bar and related images in the screen body.

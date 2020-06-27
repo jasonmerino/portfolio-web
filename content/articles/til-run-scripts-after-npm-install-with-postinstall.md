@@ -1,8 +1,9 @@
 ---
 type: "article"
-path: "/articles/til-run-scripts-after-npm-install-with-postinstall"
+path: "/til-run-scripts-after-npm-install-with-postinstall"
 title: "TIL: Run scripts after npm install with postinstall"
-description: ""
+metaTitle: ""
+metaDescription: ""
 date: "2017-05-25"
 twitterImage: ""
 ---

@@ -18,6 +18,12 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
           font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
+          height: 100%;
+          line-height: 1.8rem;
+          font-weight: 400;
+          font-style: normal;
+          -webkit-font-smoothing: antialiased;
+          color: #383838;
         }
 
         body {

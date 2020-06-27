@@ -1,8 +1,9 @@
 ---
 type: "article"
-path: "/articles/create-a-branch-from-existing-branch-in-git"
+path: "/create-a-branch-from-existing-branch-in-git"
 title: "Create a branch from existing branch in git"
-description: ""
+metaTitle: ""
+metaDescription: ""
 date: "2014-06-03"
 twitterImage: ""
 ---

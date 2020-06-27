@@ -1,8 +1,9 @@
 ---
 type: "article"
-path: "/articles/til-sending-cookies-with-the-fetch-api"
+path: "/til-sending-cookies-with-the-fetch-api"
 title: "TIL: Sending cookies with the fetch API"
-description: ""
+metaTitle: ""
+metaDescription: ""
 date: "2018-01-22"
 twitterImage: ""
 ---
@@ -23,7 +24,7 @@ fetch("https://url/to/my/api/endpoint", {
     email,
     password,
   }),
-})
+});
 ```
 
 And then here's what I had after.
@@ -39,7 +40,7 @@ fetch("https://url/to/my/api/endpoint", {
     email,
     password,
   }),
-})
+});
 ```
 
 Turns out the credentials flag defaults to 'omit' which basically means don't worry about sending cookies with this request. There are three different options and if you want to know more about them I would read about it on [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials) as this is the easiest to understand page that I've found that explains everything about the credentials flag.

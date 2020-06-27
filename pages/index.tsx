@@ -7,10 +7,20 @@ import { BlogEntryTile } from "../components/blog-entry-tile";
 export const getStaticProps = () => {
   const files = fs.readdirSync("content/articles").reverse();
 
-  const articles = files.map((file) => {
-    const { data } = parseMarkdownFile(`content/articles/${file}`);
-    return { ...data };
-  });
+  const articles = files
+    .map((file) => {
+      const { data } = parseMarkdownFile(`content/articles/${file}`);
+      return { ...data };
+    })
+    .sort((a, b) => {
+      if (a.date < b.date) {
+        return 1;
+      }
+      if (b.date < a.date) {
+        return -1;
+      }
+      return 0;
+    });
 
   return {
     props: {
@@ -65,7 +75,14 @@ export default function Home({ articles }) {
           {articles.map((article: any) => {
             const { title, draft, date, path } = article;
             if (!draft) {
-              return <BlogEntryTile title={title} date={date} href={path} />;
+              return (
+                <BlogEntryTile
+                  key={title}
+                  title={title}
+                  date={date}
+                  href={`/articles${path}`}
+                />
+              );
             }
           })}
         </div>

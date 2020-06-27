@@ -1,8 +1,9 @@
 ---
 type: "article"
-path: "/articles/til-destructuring-function-arguments-in-javascript"
+path: "/til-destructuring-function-arguments-in-javascript"
 title: "TIL: Destructuring function arguments in JavaScript"
-description: ""
+metaTitle: ""
+metaDescription: ""
 date: "2016-07-22"
 twitterImage: ""
 ---

@@ -1,8 +1,9 @@
 ---
 type: "article"
-path: "/articles/how-to-make-an-app-with-react-native-getting-started"
+path: "/how-to-make-an-app-with-react-native-getting-started"
 title: "How to Make an App With React Native I: Getting Started"
-description: "This is the first in a series showing how to make an app with React Native. We'll go over getting your computer set up to build and run React Native apps written in TypeScript."
+metaTitle: ""
+metaDescription: "This is the first in a series showing how to make an app with React Native. We'll go over getting your computer set up to build and run React Native apps written in TypeScript."
 date: "2020-04-09"
 draft: false
 twitterImage: ""

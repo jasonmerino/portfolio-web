@@ -1,9 +1,10 @@
 ---
 type: "article"
-path: "/articles/ruby-on-rails-my-gentle-introduction"
+path: "/ruby-on-rails-my-gentle-introduction"
 date: "2020-03-25"
 title: "Ruby on Rails: My Gentle Introduction"
-description: ""
+metaTitle: ""
+metaDescription: ""
 draft: true
 twitterImage: ""
 ---

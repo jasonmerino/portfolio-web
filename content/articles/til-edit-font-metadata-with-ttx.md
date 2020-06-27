@@ -1,8 +1,9 @@
 ---
 type: "article"
-path: "/articles/til-edit-font-metadata-with-ttx"
+path: "/til-edit-font-metadata-with-ttx"
 title: "TIL: Edit font metadata with TTX"
-description: "In this article we go over a way to edit font metadata with the Python library fonttools."
+metaTitle: ""
+metaDescription: "In this article we go over a way to edit font metadata with the Python library fonttools."
 date: "2016-10-02"
 twitterImage: ""
 ---

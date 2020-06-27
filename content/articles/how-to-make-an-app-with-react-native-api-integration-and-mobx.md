@@ -1,8 +1,9 @@
 ---
 type: "article"
-path: "/articles/how-to-make-an-app-with-react-native-api-integration-and-mobx"
+path: "/how-to-make-an-app-with-react-native-api-integration-and-mobx"
 title: "How to Make an App With React Native III: API Integration and Mobx"
-description: "In part three of the How to Make an App With React Native series we'll cover signing up with Pixabay to get your API key, requesting data from the API, storing that data in a reactive Mobx store and rendering images from the API data."
+metaTitle: ""
+metaDescription: "In part three of the How to Make an App With React Native series we'll cover signing up with Pixabay to get your API key, requesting data from the API, storing that data in a reactive Mobx store and rendering images from the API data."
 date: "2020-05-04"
 draft: false
 twitterImage: ""
@@ -91,7 +92,7 @@ After this, we will want to set up the application component hierarchy to suppor
 At the very top of your App.tsx file import the batching module like this.
 
 ```typescript
-import "mobx-react-lite/batchingForReactNative"
+import "mobx-react-lite/batchingForReactNative";
 ```
 
 Then import the Provider component from the `mobx-react` module and wrap the NavigationContainer component inside the Provider component. After doing this your code should look something like this.
@@ -99,15 +100,15 @@ Then import the Provider component from the `mobx-react` module and wrap the Nav
 ```typescript
 // App.tsx
 
-import "mobx-react-lite/batchingForReactNative"
-import "react-native-gesture-handler"
-import React from "react"
-import { NavigationContainer } from "@react-navigation/native"
-import { createStackNavigator } from "@react-navigation/stack"
-import { Home } from "./screens/home.screen"
-import { Provider } from "mobx-react"
+import "mobx-react-lite/batchingForReactNative";
+import "react-native-gesture-handler";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Home } from "./screens/home.screen";
+import { Provider } from "mobx-react";
 
-const AppStack = createStackNavigator()
+const AppStack = createStackNavigator();
 
 export default function App() {
   return (
@@ -124,7 +125,7 @@ export default function App() {
         </AppStack.Navigator>
       </NavigationContainer>
     </Provider>
-  )
+  );
 }
 ```
 
@@ -141,27 +142,27 @@ In this file, we'll be creating a `photos` variable which will contain an object
 ```typescript
 // stores/photo.store.ts
 
-import { observable } from "mobx"
-import Config from "react-native-config"
-import { IPhoto } from "../types/photos.types"
+import { observable } from "mobx";
+import Config from "react-native-config";
+import { IPhoto } from "../types/photos.types";
 
-const BASE_URL = "https://pixabay.com/api"
+const BASE_URL = "https://pixabay.com/api";
 
 export const photos = observable<{ [keyword: string]: IPhoto[] }>({
   default: [],
-})
+});
 
 export const searchPhotos = async (keyword?: string) => {
   const url = `${BASE_URL}/?key=${Config.PIXABAY_API_KEY}&safesearch=true${
     keyword ? `&q=${keyword}` : ""
-  }`
+  }`;
 
-  const response = await fetch(url)
+  const response = await fetch(url);
 
-  const data = await response.json()
+  const data = await response.json();
 
-  photos[keyword || "default"] = data.hits
-}
+  photos[keyword || "default"] = data.hits;
+};
 ```
 
 You'll notice that at the top of the file we import observable and later on wrap the value for the `photos` variable with it. Using Mobx this way will allow components that are using the `photos` variable to update when the value of that variable changes.
@@ -174,28 +175,28 @@ Make sure that before running your app with this code you also create the `types
 // types/photos.types.ts
 
 export interface IPhoto {
-  id: number
-  pageURL: string
-  type: string
-  tags: string
-  previewURL: string
-  previewWidth: number
-  previewHeight: number
-  webformatURL: string
-  webformatWidth: number
-  webformatHeight: number
-  largeImageURL: string
-  imageWidth: number
-  imageHeight: number
-  imageSize: number
-  views: number
-  downloads: number
-  favorites: number
-  likes: number
-  comments: number
-  user_id: number
-  user: string
-  userImageURL: string
+  id: number;
+  pageURL: string;
+  type: string;
+  tags: string;
+  previewURL: string;
+  previewWidth: number;
+  previewHeight: number;
+  webformatURL: string;
+  webformatWidth: number;
+  webformatHeight: number;
+  largeImageURL: string;
+  imageWidth: number;
+  imageHeight: number;
+  imageSize: number;
+  views: number;
+  downloads: number;
+  favorites: number;
+  likes: number;
+  comments: number;
+  user_id: number;
+  user: string;
+  userImageURL: string;
 }
 ```
 
@@ -210,24 +211,24 @@ All we need to do now is to make some changes to our `screens/home.screen.tsx` f
 ```typescript
 // screens/home.screen.tsx
 
-import React, { useEffect } from "react"
-import { FlatList, StyleSheet } from "react-native"
-import { photos, searchPhotos } from "../stores/photo.store"
-import { Image } from "../components/image.component"
-import { observer } from "mobx-react"
-import { deviceWidth } from "../theme/space"
-import { IPhoto } from "../types/photos.types"
+import React, { useEffect } from "react";
+import { FlatList, StyleSheet } from "react-native";
+import { photos, searchPhotos } from "../stores/photo.store";
+import { Image } from "../components/image.component";
+import { observer } from "mobx-react";
+import { deviceWidth } from "../theme/space";
+import { IPhoto } from "../types/photos.types";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-})
+});
 
 export const Home = observer(() => {
   useEffect(() => {
-    searchPhotos()
-  }, [])
+    searchPhotos();
+  }, []);
 
   const renderPhoto = ({ item }: { item: IPhoto }) => (
     <Image
@@ -238,17 +239,17 @@ export const Home = observer(() => {
         height: (deviceWidth / item.imageWidth) * item.imageHeight,
       }}
     />
-  )
+  );
 
   return (
     <FlatList
-      keyExtractor={photo => photo.id.toString()}
+      keyExtractor={(photo) => photo.id.toString()}
       data={photos.default}
       style={styles.container}
       renderItem={renderPhoto}
     />
-  )
-})
+  );
+});
 ```
 
 Here you can see that we've wrapped the `Home` component with an `observer` function. This tells the component, that when the Mobx data we're using in this component changes, make sure to re-render the component with that new data.
@@ -262,17 +263,17 @@ After you've made those changes, don't forget to create a new Image component in
 ```typescript
 // components/image.component.tsx
 
-import React, { FC } from "react"
-import { Image as Img, ImageStyle } from "react-native"
+import React, { FC } from "react";
+import { Image as Img, ImageStyle } from "react-native";
 
 interface IProps {
-  uri: string
-  style?: ImageStyle
+  uri: string;
+  style?: ImageStyle;
 }
 
 export const Image: FC<IProps> = ({ uri, style }) => {
-  return <Img source={{ uri }} style={style} />
-}
+  return <Img source={{ uri }} style={style} />;
+};
 ```
 
 This is an abstraction that we will use later on to set a default loading image for all images, among other things. For now, it's just a simple pass-through of image data to the React Native Image component.
@@ -282,9 +283,9 @@ Also, we'll need to add in the deviceWidth helper in the `theme/space.ts` file. 
 ```ts
 // theme/space.ts
 
-import { Dimensions } from "react-native"
+import { Dimensions } from "react-native";
 
-export const deviceWidth = Dimensions.get("screen").width
+export const deviceWidth = Dimensions.get("screen").width;
 ```
 
 With those changes in your app, you should see Pixabay images showing on the home screen! Congratulations! 🎉 You've just added an API call to get remote data and reactively render it in your app. Not too shabby.

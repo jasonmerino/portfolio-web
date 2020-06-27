@@ -1,8 +1,9 @@
 ---
 type: "article"
-path: "/articles/how-to-make-an-app-with-react-native-setting-up-navigation"
+path: "/how-to-make-an-app-with-react-native-setting-up-navigation"
 title: "How to Make an App With React Native II: Setting up Navigation"
-description: "In the second installment of the How to Make an App With React Native series, we'll cover adding the react-navigation library to the app to allow users to navigate around the app."
+metaTitle: ""
+metaDescription: "In the second installment of the How to Make an App With React Native series, we'll cover adding the react-navigation library to the app to allow users to navigate around the app."
 date: "2020-04-14"
 draft: false
 twitterImage: ""
@@ -80,8 +81,8 @@ First, let's do a quick refactor and create a `screens` directory in the project
 After creating that new screen file, remove the home screen components from the `App.tsx` file and place it in the `home.screen.tsx` file. When you're finished it should look something like this.
 
 ```typescript
-import React from "react"
-import { View, Text, StyleSheet } from "react-native"
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -90,27 +91,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-})
+});
 
 export const Home = () => {
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
     </View>
-  )
-}
+  );
+};
 ```
 
 And then back in the `App.tsx` file we need to add in the new stack navigator. We'll need to import `createStackNavigator` from the `@react-navigation/stack` module and then create a stack navigator called AppStack and use that stack navigator inside the NavigationContainer component. After all that, your `App.tsx` file will look something like this.
 
 ```typescript
-import "react-native-gesture-handler"
-import React from "react"
-import { NavigationContainer } from "@react-navigation/native"
-import { createStackNavigator } from "@react-navigation/stack"
-import { Home } from "./screens/home.screen"
+import "react-native-gesture-handler";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Home } from "./screens/home.screen";
 
-const AppStack = createStackNavigator()
+const AppStack = createStackNavigator();
 
 export default function App() {
   return (
@@ -119,7 +120,7 @@ export default function App() {
         <AppStack.Screen name="Home" component={Home} />
       </AppStack.Navigator>
     </NavigationContainer>
-  )
+  );
 }
 ```
 
