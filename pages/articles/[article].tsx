@@ -5,6 +5,8 @@ import { FC } from "react";
 import { config } from "../../config";
 import { parseMarkdownFile } from "../../utils/markdown";
 import moment from "moment";
+import ReactMarkdown from "react-markdown";
+import { Code } from "../../components/code";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articlesDir = fs.readdirSync("content/articles");
@@ -19,13 +21,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = (context) => {
   const {
-    htmlContent,
+    content,
     data: { title, metaDescription, metaTitle, path, date },
   } = parseMarkdownFile(`content/articles/${context.params.article}.md`);
   return {
     props: {
       path,
-      htmlContent,
+      content,
       title,
       metaDescription,
       metaTitle,
@@ -36,7 +38,7 @@ export const getStaticProps = (context) => {
 
 interface Props {
   path: string;
-  htmlContent: string;
+  content: string;
   title: string;
   metaDescription: string;
   metaTitle: string;
@@ -44,7 +46,7 @@ interface Props {
 }
 
 const ArticleTemplate: FC<Props> = ({
-  htmlContent,
+  content,
   title,
   path,
   metaTitle,
@@ -73,9 +75,12 @@ const ArticleTemplate: FC<Props> = ({
       <article className="pa3 w-100 w-70-l center-l">
         <h1>{title}</h1>
         <strong>{moment(date, "YYYY-MM-DD").format("MMMM DD, YYYY")}</strong>
-        <div
+        <ReactMarkdown
           className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: htmlContent }}
+          source={content}
+          renderers={{
+            code: Code,
+          }}
         />
       </article>
     </>

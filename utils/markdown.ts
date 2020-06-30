@@ -5,5 +5,5 @@ import marked from "marked";
 export const parseMarkdownFile = (page: string) => {
   const markdown = fs.readFileSync(page, "utf-8");
   const { content, data } = matter(markdown);
-  return { data, htmlContent: marked(content) };
+  return { data, content, htmlContent: marked(content) };
 };

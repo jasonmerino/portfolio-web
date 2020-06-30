@@ -1,4 +1,5 @@
 import "tachyons";
+import "../node_modules/highlight.js/styles/tomorrow-night-eighties.css";
 import { FC } from "react";
 import { AppProps } from "next/app";
 import { Header } from "../components/header";
