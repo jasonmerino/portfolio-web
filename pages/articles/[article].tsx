@@ -7,6 +7,7 @@ import { parseMarkdownFile } from "../../utils/markdown";
 import moment from "moment";
 import ReactMarkdown from "react-markdown";
 import { Code } from "../../components/code";
+import { Author } from "../../components/author";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articlesDir = fs.readdirSync("content/articles");
@@ -83,6 +84,7 @@ const ArticleTemplate: FC<Props> = ({
           }}
         />
       </article>
+      <Author />
     </>
   );
 };
