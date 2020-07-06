@@ -66,7 +66,7 @@ const PageTemplate: FC<Props> = ({
           content={`${config.topLevelDomain}/default-og-image.png`}
         />
       </Head>
-      <div>
+      <div className="ph3">
         <h1>{title}</h1>
         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
       </div>

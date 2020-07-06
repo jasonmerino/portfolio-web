@@ -3,6 +3,7 @@ import "../node_modules/highlight.js/styles/tomorrow-night-eighties.css";
 import { FC } from "react";
 import { AppProps } from "next/app";
 import { Header } from "../components/header";
+import { Footer } from "../components/footer";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -11,6 +12,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       <section className={`w-100 mw8 center bg-white`}>
         <Component {...pageProps} />
       </section>
+      <Footer />
       <style jsx global>{`
         html,
         body {
