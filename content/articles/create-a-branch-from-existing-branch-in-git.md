@@ -2,8 +2,8 @@
 type: "article"
 path: "/create-a-branch-from-existing-branch-in-git"
 title: "Create a branch from existing branch in git"
-metaTitle: ""
-metaDescription: ""
+metaTitle: "How to create a new branch from an existing branch in git"
+metaDescription: "Learn how to create a new branch from an existing branch no matter what branch you currently have checked out."
 date: "2014-06-03"
 twitterImage: ""
 ---
@@ -12,7 +12,7 @@ twitterImage: ""
 
 Tuesday, June 3, 2014
 
-TL;DR; The command you need is git checkout -b new-branch existing-branch
+TL;DR; The command you need is `git checkout -b new-branch existing-branch`
 
 Do you ever find yourself working on a new feature for program you're writing and making lots of good progress when a few commits in you realize that you aren't even working in the branch you thought you were? I've found myself in this position a few times and every time I do I always seem to have trouble remembering what the git command is to create a branch from an existing branch.
 

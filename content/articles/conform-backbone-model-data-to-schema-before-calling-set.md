@@ -2,8 +2,8 @@
 type: "article"
 path: "/conform-backbone-model-data-to-schema-before-calling-set"
 title: "Conform Backbone model data to schema before calling set"
-metaTitle: ""
-metaDescription: ""
+metaTitle: "How to conform a Backbone model to the schema before calling set"
+metaDescription: "Today we're going to learn how to make sure that the data we're passing to a Backbone model is of the type that a model expects before calling the set function."
 date: "2014-11-23"
 twitterImage: ""
 ---
