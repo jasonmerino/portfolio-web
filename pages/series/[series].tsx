@@ -1,24 +1,30 @@
-import fs from "fs";
-import { GetStaticPaths } from "next";
+import { NextPage, GetStaticPaths } from "next";
 import Head from "next/head";
-import { FC } from "react";
 import { config } from "../../config";
+import fs from "fs";
 import { parseMarkdownFile } from "../../utils/markdown";
-import moment from "moment";
-import ReactMarkdown from "react-markdown";
-import { Code } from "../../components/code";
-import { Author } from "../../components/author";
 import { ArticleMeta } from "../../types/article";
+import { slugify } from "../../utils/string";
+
+interface Props {
+  title: string;
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articlesDir = fs.readdirSync("content/articles");
+  const paths = [];
+  articlesDir.map((article) => {
+    const { data } = parseMarkdownFile<ArticleMeta>(
+      `content/articles/${article}`
+    );
+    const path = `/series/${slugify(data.series)}`;
+    if (data.series && !paths.includes(path)) {
+      paths.push(path);
+    }
+  });
+
   return {
-    paths: articlesDir.map((article) => {
-      const { data } = parseMarkdownFile<ArticleMeta>(
-        `content/articles/${article}`
-      );
-      return `/articles${data.path}`;
-    }),
+    paths,
     fallback: false,
   };
 };
@@ -26,38 +32,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps = (context) => {
   const {
     content,
-    data: { title, metaDescription, metaTitle, path, date },
+    data: { series },
   } = parseMarkdownFile(`content/articles/${context.params.article}.md`);
   return {
     props: {
-      path,
-      content,
-      title,
-      metaDescription,
-      metaTitle,
-      date,
+      title: series,
     },
   };
 };
 
-interface Props {
-  path: string;
-  content: string;
-  title: string;
-  metaDescription: string;
-  metaTitle: string;
-  date: string;
-}
-
-const ArticleTemplate: FC<Props> = ({
-  content,
-  title,
-  path,
-  metaTitle,
-  metaDescription,
-  date,
-}) => {
-  const url = `${config.topLevelDomain}${path}`;
+const Series: NextPage<Props> = ({ title }) => {
   return (
     <>
       <Head>
@@ -78,18 +62,9 @@ const ArticleTemplate: FC<Props> = ({
       </Head>
       <article className="pa3 w-100 w-70-l center-l">
         <h1>{title}</h1>
-        <strong>{moment(date, "YYYY-MM-DD").format("MMMM DD, YYYY")}</strong>
-        <ReactMarkdown
-          className="blog-post-content"
-          source={content}
-          renderers={{
-            code: Code,
-          }}
-        />
       </article>
-      <Author />
     </>
   );
 };
 
-export default ArticleTemplate;
+export default Series;

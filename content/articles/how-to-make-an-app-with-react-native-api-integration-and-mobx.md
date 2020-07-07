@@ -7,6 +7,7 @@ metaDescription: "In part three of the How to Make an App With React Native seri
 date: "2020-05-04"
 draft: false
 twitterImage: ""
+series: "How to Make an App with React Native"
 ---
 
 This is part three of a series on learning how to build a stock photo browsing app in React Native. If you haven't read the previous 2 articles in this series I suggest you go through those first. [Here's the post on getting started with React Native](https://jasonmerino.me/articles/how-to-make-an-app-with-react-native-getting-started).

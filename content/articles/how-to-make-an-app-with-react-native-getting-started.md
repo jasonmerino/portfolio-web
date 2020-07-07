@@ -7,6 +7,7 @@ metaDescription: "This is the first in a series showing how to make an app with 
 date: "2020-04-09"
 draft: false
 twitterImage: ""
+series: "How to Make an App with React Native"
 ---
 
 I've been working pretty heavily with React Native for the past few years and have come to love the framework for the ease of development that it provides and the wonderful and active community that has rallied around it. I think that it's definitely worth looking into as an option for your next mobile app project.

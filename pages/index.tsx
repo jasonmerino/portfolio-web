@@ -3,33 +3,47 @@ import { Button } from "../components/button";
 import fs from "fs";
 import { parseMarkdownFile } from "../utils/markdown";
 import { BlogEntryTile } from "../components/blog-entry-tile";
+import { sort } from "../utils/array";
+import { ArticleMeta } from "../types/article";
+import { NextPage } from "next";
+import { ArticleSeriesTile } from "../components/article-series-tile";
+
+interface Props {
+  articles: ArticleMeta[];
+  series: string[];
+}
 
 export const getStaticProps = () => {
   const files = fs.readdirSync("content/articles").reverse();
 
-  const articles = files
-    .map((file) => {
-      const { data } = parseMarkdownFile(`content/articles/${file}`);
+  const allArticles = sort(
+    files.map((file) => {
+      const { data } = parseMarkdownFile<ArticleMeta>(
+        `content/articles/${file}`
+      );
       return { ...data };
-    })
-    .sort((a, b) => {
-      if (a.date < b.date) {
-        return 1;
-      }
-      if (b.date < a.date) {
-        return -1;
-      }
-      return 0;
-    });
+    }),
+    "date"
+  );
+
+  const series = allArticles.reduce((previous, current) => {
+    if (current.series && !previous.includes(current.series)) {
+      previous.push(current.series);
+    }
+    return previous;
+  }, []);
+
+  const props: Props = {
+    articles: allArticles,
+    series,
+  };
 
   return {
-    props: {
-      articles,
-    },
+    props,
   };
 };
 
-export default function Home({ articles }) {
+const Home: NextPage<Props> = ({ articles, series }) => {
   return (
     <>
       <div className="span4 container">
@@ -70,20 +84,25 @@ export default function Home({ articles }) {
             </div>
           </div>
         </div>
-        <h2 className="mt5 ml3">Recent Writing</h2>
+        <h2 className="mt5 ml3">Recent Series</h2>
+        {series.map((current) => {
+          return <ArticleSeriesTile key={current} title={current} />;
+        })}
+        <h2 className="mt5 ml3">Recent Articles</h2>
         <div className="flex flex-row flex-wrap">
-          {articles.map((article: any) => {
-            const { title, draft, date, path } = article;
-            if (!draft) {
-              return (
-                <BlogEntryTile
-                  key={title}
-                  title={title}
-                  date={date}
-                  href={`/articles${path}`}
-                />
-              );
+          {articles.map((article: ArticleMeta) => {
+            const { title, draft, date, path, series } = article;
+            if (draft || series) {
+              return null;
             }
+            return (
+              <BlogEntryTile
+                key={title}
+                title={title}
+                date={date}
+                href={`/articles${path}`}
+              />
+            );
           })}
         </div>
       </div>
@@ -131,4 +150,6 @@ export default function Home({ articles }) {
       `}</style>
     </>
   );
-}
+};
+
+export default Home;

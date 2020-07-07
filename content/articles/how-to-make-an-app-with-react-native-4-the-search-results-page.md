@@ -7,6 +7,7 @@ metaDescription: "In part four of the how to make an app with React Native serie
 date: "2020-05-14"
 draft: false
 twitterImage: "/social-images/twitter-how-to-make-an-app-with-react-native-part-4.png"
+series: "How to Make an App with React Native"
 ---
 
 Hi, and welcome to part four of our series on how to make an app with React Native! If you haven't been following along with parts one through three, I suggest you go back and get started there. You can [read the first article in the series here](https://jasonmerino.me/articles/how-to-make-an-app-with-react-native-getting-started). If you're ready for what comes next, let's dive in!

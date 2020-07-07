@@ -7,6 +7,7 @@ metaDescription: "In the second installment of the How to Make an App With React
 date: "2020-04-14"
 draft: false
 twitterImage: ""
+series: "How to Make an App with React Native"
 ---
 
 In the last article in this series, [Stock Photo Browser in React Native: Getting Started](https://jasonmerino.me/articles/how-to-make-an-app-with-react-native-getting-started), we initialized a React Native app with TypeScript. If you haven't followed through that article, I recommend taking some time to go through it to make sure your project is set up in the same manner as the one we'll be working on below.
