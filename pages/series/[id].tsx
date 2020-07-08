@@ -5,9 +5,11 @@ import fs from "fs";
 import { parseMarkdownFile } from "../../utils/markdown";
 import { ArticleMeta } from "../../types/article";
 import { slugify } from "../../utils/string";
+import { getSeriesData, ArticleData } from "../../utils/files";
 
 interface Props {
   title: string;
+  articles: ArticleData[];
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -17,9 +19,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const { data } = parseMarkdownFile<ArticleMeta>(
       `content/articles/${article}`
     );
-    const path = `/series/${slugify(data.series)}`;
+    const path = slugify(data.series);
     if (data.series && !paths.includes(path)) {
-      paths.push(path);
+      paths.push({
+        params: {
+          id: path,
+          file: data.path,
+        },
+      });
     }
   });
 
@@ -30,21 +37,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps = (context) => {
-  const {
-    content,
-    data: { series },
-  } = parseMarkdownFile(`content/articles/${context.params.article}.md`);
+  const series = getSeriesData().find((current) => {
+    return current.path === context.params.id;
+  });
+  const props: Props = {
+    title: series.title,
+    articles: series.articles,
+  };
   return {
-    props: {
-      title: series,
-    },
+    props,
   };
 };
 
-const Series: NextPage<Props> = ({ title }) => {
+const Series: NextPage<Props> = ({ title, articles }) => {
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>{metaTitle} | Jason Merino (.me)</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content={metaDescription} />
@@ -59,9 +67,12 @@ const Series: NextPage<Props> = ({ title }) => {
           property="og:image"
           content={`${config.topLevelDomain}/default-og-image.png`}
         />
-      </Head>
+      </Head> */}
       <article className="pa3 w-100 w-70-l center-l">
         <h1>{title}</h1>
+        {articles.map((article) => {
+          return <div key={article.path}>{article.path}</div>;
+        })}
       </article>
     </>
   );
