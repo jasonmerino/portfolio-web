@@ -4,12 +4,13 @@ import Head from "next/head";
 import { FC } from "react";
 import { config } from "../config";
 import { parseMarkdownFile } from "../utils/markdown";
+import { PageMeta } from "../types/page";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const pagesDir = fs.readdirSync("./content/pages");
   return {
     paths: pagesDir.map((page) => {
-      const { data } = parseMarkdownFile(`./content/pages/${page}`);
+      const { data } = parseMarkdownFile<PageMeta>(`./content/pages/${page}`);
       return data.path;
     }),
     fallback: false,
