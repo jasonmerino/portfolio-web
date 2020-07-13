@@ -1,6 +1,8 @@
 import { NextPage, GetStaticPaths } from "next";
 import { getSeriesData, ArticleData } from "../../utils/files";
 import Link from "next/link";
+import Head from "next/head";
+import { config } from "../../config";
 
 interface Props {
   title: string;
@@ -36,9 +38,11 @@ export const getStaticProps = (context) => {
 };
 
 const Series: NextPage<Props> = ({ title, articles }) => {
+  const { metaTitle, metaDescription, path } = articles[0].data;
+  const url = `${config.topLevelDomain}/articles${path}`;
   return (
     <>
-      {/* <Head>
+      <Head>
         <title>{metaTitle} | Jason Merino (.me)</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content={metaDescription} />
@@ -53,7 +57,7 @@ const Series: NextPage<Props> = ({ title, articles }) => {
           property="og:image"
           content={`${config.topLevelDomain}/default-og-image.png`}
         />
-      </Head> */}
+      </Head>
       <article className="pa3 w-100 w-70-l center-l">
         <h1 className="pb3">Series: {title}</h1>
         {articles.map((article) => {
