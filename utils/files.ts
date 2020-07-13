@@ -44,6 +44,16 @@ export const getSeriesData = (): SeriesData[] => {
       });
     } else {
       previous[index].articles.push(current);
+      // assure that articles in a series are sorted by date
+      previous[index].articles.sort((a, b) => {
+        if (a.data.date < b.data.date) {
+          return -1;
+        }
+        if (a.data.date > b.data.date) {
+          return 1;
+        }
+        return 0;
+      });
     }
     return previous;
   }, [] as SeriesData[]);
