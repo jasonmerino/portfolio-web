@@ -1,26 +1,21 @@
 import { NextPage, GetStaticPaths } from "next";
+import { getSeriesData, ArticleData } from "../../utils/files";
+import Link from "next/link";
 import Head from "next/head";
 import { config } from "../../config";
-import fs from "fs";
-import { parseMarkdownFile } from "../../utils/markdown";
-import { ArticleMeta } from "../../types/article";
-import { slugify } from "../../utils/string";
 
 interface Props {
   title: string;
+  articles: ArticleData[];
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articlesDir = fs.readdirSync("content/articles");
-  const paths = [];
-  articlesDir.map((article) => {
-    const { data } = parseMarkdownFile<ArticleMeta>(
-      `content/articles/${article}`
-    );
-    const path = `/series/${slugify(data.series)}`;
-    if (data.series && !paths.includes(path)) {
-      paths.push(path);
-    }
+  const paths = getSeriesData().map((current) => {
+    return {
+      params: {
+        id: current.path,
+      },
+    };
   });
 
   return {
@@ -30,18 +25,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps = (context) => {
-  const {
-    content,
-    data: { series },
-  } = parseMarkdownFile(`content/articles/${context.params.article}.md`);
+  const { title, articles } = getSeriesData().find((current) => {
+    return current.path === context.params.id;
+  });
+  const props: Props = {
+    title,
+    articles,
+  };
   return {
-    props: {
-      title: series,
-    },
+    props,
   };
 };
 
-const Series: NextPage<Props> = ({ title }) => {
+const Series: NextPage<Props> = ({ title, articles }) => {
+  const { metaTitle, metaDescription, path } = articles[0].data;
+  const url = `${config.topLevelDomain}/articles${path}`;
   return (
     <>
       <Head>
@@ -61,7 +59,17 @@ const Series: NextPage<Props> = ({ title }) => {
         />
       </Head>
       <article className="pa3 w-100 w-70-l center-l">
-        <h1>{title}</h1>
+        <h1 className="pb3">Series: {title}</h1>
+        {articles.map((article) => {
+          return (
+            <Link key={article.path} href={`/articles${article.data.path}`}>
+              <div className="pb3 pointer">
+                <h3>{article.data.title}</h3>
+                <p>{article.data.metaDescription}</p>
+              </div>
+            </Link>
+          );
+        })}
       </article>
     </>
   );
