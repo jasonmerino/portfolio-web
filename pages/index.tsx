@@ -1,12 +1,10 @@
 import Head from "next/head";
 import { Button } from "../components/button";
-import fs from "fs";
-import { parseMarkdownFile } from "../utils/markdown";
 import { BlogEntryTile } from "../components/blog-entry-tile";
-import { sort } from "../utils/array";
 import { ArticleMeta } from "../types/article";
 import { NextPage } from "next";
 import { ArticleSeriesTile } from "../components/article-series-tile";
+import { getArticlesData, getSeriesData } from "../utils/files";
 
 interface Props {
   articles: ArticleMeta[];
@@ -14,28 +12,12 @@ interface Props {
 }
 
 export const getStaticProps = () => {
-  const files = fs.readdirSync("content/articles").reverse();
-
-  const allArticles = sort(
-    files.map((file) => {
-      const { data } = parseMarkdownFile<ArticleMeta>(
-        `content/articles/${file}`
-      );
-      return { ...data };
-    }),
-    "date"
-  );
-
-  const series = allArticles.reduce((previous, current) => {
-    if (current.series && !previous.includes(current.series)) {
-      previous.push(current.series);
-    }
-    return previous;
-  }, []);
+  const articles = getArticlesData();
+  const series = getSeriesData();
 
   const props: Props = {
-    articles: allArticles,
-    series,
+    articles: articles.map((article) => article.data),
+    series: series.map((current) => current.title),
   };
 
   return {
