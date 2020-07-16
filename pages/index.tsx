@@ -61,6 +61,7 @@ const Home: NextPage<Props> = ({ articles, series }) => {
               <Button
                 url={`/projects`}
                 text={`Learn more...`}
+                theme="dark"
                 className="mt3"
               />
             </div>
