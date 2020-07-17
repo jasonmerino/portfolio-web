@@ -1,16 +1,19 @@
-import React from "react"
+import React from "react";
 
 export default () => {
   return (
-      <>
+    <>
       <div className="pa3">
         <h1>Projects</h1>
         <div className="fl w-30-ns">
-          <img src="/images/lets-garden-app-journal-screen.png" alt="Let's Garden app journal entry screen" />
+          <img
+            src="/images/lets-garden-app-journal-screen.png"
+            alt="Let's Garden app journal entry screen"
+          />
         </div>
         <div className="fl w-70-ns">
-          <h3>Let's Garden app for iOS and Android</h3>
-          <h4>The Challenge</h4>
+          <h2>Let's Garden app for iOS</h2>
+          <h3>The Challenge</h3>
           <p>
             Gardening is one of my favorite hobbies. I love the calm of the
             outdoors. I love the relentless force of nature to survive and
@@ -23,7 +26,7 @@ export default () => {
             journal app for keeping track of what I'm growing and what I've
             learned over the seasons.
           </p>
-          <h4>The Result</h4>
+          <h3>The Result</h3>
           <p>
             I use{" "}
             <a href="https://facebook.github.io/react-native/">React Native</a>{" "}
@@ -35,18 +38,20 @@ export default () => {
             Expo was great in the beginning to get me started quickly, but over
             time some things started to slow me down. After a while of fighting
             through these things, I decided to convert over to a straight-up
-            React Native project.  To check the app out, visit the{" "}
+            React Native project. To check the app out, visit the{" "}
             <a href="https://letsgarden.app/">Let's Garden website</a>.
           </p>
-           
         </div>
         <div className={`fl w-100`}>
           <div className="fl w-30-ns">
-            <img src="/images/minhub-youth-events-screenshot.png" alt="Minhub Youth app events screen" />
+            <img
+              src="/images/minhub-youth-events-screenshot.png"
+              alt="Minhub Youth app events screen"
+            />
           </div>
           <div className="fl w-70-ns">
-            <h3>Minhub Youth app for iOS and Android</h3>
-            <h4>The Challenge</h4>
+            <h2>Minhub Youth app for iOS and Android</h2>
+            <h3>The Challenge</h3>
             <p>
               The founder of Magic Makrs had an iOS app for youth pastors called{" "}
               <a href="https://minhubapp.com/">Minhub Youth</a>, which he wanted
@@ -57,7 +62,7 @@ export default () => {
               When he found out that API was going to be shut down, he came to
               me for a new solution.
             </p>
-            <h4>The Result</h4>
+            <h3>The Result</h3>
             <p>
               The two main use cases of the app are as a local database used in
               offline mode and, conversely, a synced database that multiple
@@ -80,6 +85,6 @@ export default () => {
         </div>
       </div>
       <div className="cf" />
-      </>
-  )
-}
+    </>
+  );
+};
