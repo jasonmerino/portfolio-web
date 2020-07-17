@@ -12,20 +12,18 @@ interface IBlogEntryTile {
 export const BlogEntryTile: FC<IBlogEntryTile> = ({ title, date, href }) => {
   return (
     <>
-      <div className="article-container">
-        <Link href={href}>
-          <>
-            <div>
-              <h3 className="f4 mv2">{title}</h3>
-            </div>
-            <div>
-              <span className="f6 i dark1">
-                {moment(date, "YYYY-MM-DD").format("MMM D, YYYY")}
-              </span>
-            </div>
-          </>
-        </Link>
-      </div>
+      <Link href={href}>
+        <div className="article-container">
+          <div>
+            <h3 className="f4 mv2">{title}</h3>
+          </div>
+          <div>
+            <span className="f6 i dark1">
+              {moment(date, "YYYY-MM-DD").format("MMM D, YYYY")}
+            </span>
+          </div>
+        </div>
+      </Link>
       <style jsx>{`
         .article-container {
           width: 100%;
