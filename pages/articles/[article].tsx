@@ -1,6 +1,5 @@
 import fs from "fs";
 import { GetStaticPaths } from "next";
-import Head from "next/head";
 import { FC } from "react";
 import { config } from "../../config";
 import { parseMarkdownFile } from "../../utils/markdown";
@@ -9,6 +8,7 @@ import ReactMarkdown from "react-markdown";
 import { Code } from "../../components/code";
 import { Author } from "../../components/author";
 import { ArticleMeta } from "../../types/article";
+import { HTMLHead } from "../../components/html-head";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articlesDir = fs.readdirSync("content/articles");
@@ -60,22 +60,11 @@ const ArticleTemplate: FC<Props> = ({
   const url = `${config.topLevelDomain}${path}`;
   return (
     <>
-      <Head>
-        <title>{metaTitle} | Jason Merino (.me)</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content={metaDescription} />
-        <link rel="canonical" href={url} />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={url} />
-        <meta property="og:title" content={metaTitle} />
-        <meta property="og:description" content={metaDescription} />
-        <meta property="og:site_name" content="JasonMerino.me" />
-        <meta
-          property="og:image"
-          content={`${config.topLevelDomain}/default-og-image.png`}
-        />
-      </Head>
+      <HTMLHead
+        metaTitle={metaTitle}
+        metaDescription={metaDescription}
+        canonical={path}
+      />
       <article className="pa3 w-100 w-70-l center-l">
         <h1>{title}</h1>
         <strong>{moment(date, "YYYY-MM-DD").format("MMMM DD, YYYY")}</strong>

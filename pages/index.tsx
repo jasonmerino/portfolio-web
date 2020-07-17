@@ -1,10 +1,10 @@
-import Head from "next/head";
 import { Button } from "../components/button";
 import { BlogEntryTile } from "../components/blog-entry-tile";
 import { ArticleMeta } from "../types/article";
 import { NextPage } from "next";
 import { ArticleSeriesTile } from "../components/article-series-tile";
 import { getArticlesData, getSeriesData } from "../utils/files";
+import { HTMLHead } from "../components/html-head";
 
 interface Props {
   articles: ArticleMeta[];
@@ -29,10 +29,11 @@ const Home: NextPage<Props> = ({ articles, series }) => {
   return (
     <>
       <div className="span4 container">
-        <Head>
-          <title>Jason Merino (.me)</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
+        <HTMLHead
+          metaTitle="Hello! 👋🏼"
+          metaDescription="Hi! My name is Jason. I'm a software generalist who works with Python, JavaScript, TypeScript, React Native, Unity, Java and much more. I love to learn and explore new things as often as possible."
+          canonical="/"
+        />
         <div className="dn db-ns">
           <div className="work-pager-background-ns" />
           <div className="work-page-ns">
