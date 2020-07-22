@@ -2,7 +2,7 @@
 type: "article"
 path: "/til-object-spread-operator"
 title: "TIL: Object Spread Operator"
-metaTitle: ""
+metaTitle: "Today I learned about the object spread operator in JS"
 metaDescription: ""
 date: "2015-12-11"
 twitterImage: ""

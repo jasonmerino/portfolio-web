@@ -2,7 +2,7 @@
 type: "article"
 path: "/react-native-simple-store"
 title: "React Native Simple Store"
-metaTitle: ""
+metaTitle: "My new open source project react-native-simple-store"
 metaDescription: ""
 date: "2015-10-09"
 twitterImage: ""

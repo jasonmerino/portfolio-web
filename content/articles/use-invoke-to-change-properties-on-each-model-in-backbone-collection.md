@@ -2,7 +2,7 @@
 type: "article"
 path: "/use-invoke-to-change-properties-on-each-model-in-backbone-collection"
 title: "Use invoke to change properties on each model in Backbone collection"
-metaTitle: ""
+metaTitle: "Use invoke to change properties on each model in Backbone collection"
 metaDescription: ""
 date: "2014-10-03"
 twitterImage: ""

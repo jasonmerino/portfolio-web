@@ -2,7 +2,7 @@
 type: "article"
 path: "/til-how-to-get-a-specific-number-of-lines-above-and-below-a-matched-term-with-grep"
 title: "TIL: How to get a specific number of lines above and below a matched term with grep"
-metaTitle: ""
+metaTitle: "Today I learned how to get a specific number of lines above and below a matched term with grep"
 metaDescription: "Today I learned how to set the number of lines to show above and below a matching term when using grep."
 date: "2016-05-04"
 twitterImage: ""

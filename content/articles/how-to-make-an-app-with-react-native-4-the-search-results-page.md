@@ -2,7 +2,7 @@
 type: "article"
 path: "/how-to-make-an-app-with-react-native-4-the-search-results-page"
 title: "How to Make an App With React Native IV: The Search Results Page"
-metaTitle: ""
+metaTitle: "How to Make an App With React Native | The Search Results Page"
 metaDescription: "In part four of the how to make an app with React Native series, we cover adding an explore component and navigating to a new search results screen."
 date: "2020-05-14"
 draft: false

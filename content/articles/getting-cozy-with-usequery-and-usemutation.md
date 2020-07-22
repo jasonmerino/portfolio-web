@@ -2,8 +2,8 @@
 type: "article"
 path: "/getting-cozy-with-usequery-and-usemutation"
 title: "Getting Cozy with useQuery and useMutation"
-metaTitle: ""
-metaDescription: ""
+metaTitle: "Getting Cozy with useQuery and useMutation"
+metaDescription: "Take some time to explore the new React hooks inside the Apollo Client."
 date: "2019-09-20"
 twitterImage: ""
 ---

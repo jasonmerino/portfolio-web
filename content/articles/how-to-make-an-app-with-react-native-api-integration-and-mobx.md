@@ -2,7 +2,7 @@
 type: "article"
 path: "/how-to-make-an-app-with-react-native-api-integration-and-mobx"
 title: "How to Make an App With React Native III: API Integration and Mobx"
-metaTitle: ""
+metaTitle: "How to Make an App With React Native | API Integration and Mobx"
 metaDescription: "In part three of the How to Make an App With React Native series we'll cover signing up with Pixabay to get your API key, requesting data from the API, storing that data in a reactive Mobx store and rendering images from the API data."
 date: "2020-05-04"
 draft: false

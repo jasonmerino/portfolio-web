@@ -2,7 +2,7 @@
 type: "article"
 path: "/til-edit-font-metadata-with-ttx"
 title: "TIL: Edit font metadata with TTX"
-metaTitle: ""
+metaTitle: "Today I learned how to edit font metadata with TTX"
 metaDescription: "In this article we go over a way to edit font metadata with the Python library fonttools."
 date: "2016-10-02"
 twitterImage: ""

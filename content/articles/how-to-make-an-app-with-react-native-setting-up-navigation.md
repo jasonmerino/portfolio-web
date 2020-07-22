@@ -2,7 +2,7 @@
 type: "article"
 path: "/how-to-make-an-app-with-react-native-setting-up-navigation"
 title: "How to Make an App With React Native II: Setting up Navigation"
-metaTitle: ""
+metaTitle: "How to Make an App With React Native | Setting up Navigation"
 metaDescription: "In the second installment of the How to Make an App With React Native series, we'll cover adding the react-navigation library to the app to allow users to navigate around the app."
 date: "2020-04-14"
 draft: false

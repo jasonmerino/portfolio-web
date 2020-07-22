@@ -2,7 +2,7 @@
 type: "article"
 path: "/til-sending-cookies-with-the-fetch-api"
 title: "TIL: Sending cookies with the fetch API"
-metaTitle: ""
+metaTitle: "Today I learned how to send cookies with the fetch API in JS"
 metaDescription: ""
 date: "2018-01-22"
 twitterImage: ""

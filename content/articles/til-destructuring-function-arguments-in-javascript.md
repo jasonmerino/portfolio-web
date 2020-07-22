@@ -2,7 +2,7 @@
 type: "article"
 path: "/til-destructuring-function-arguments-in-javascript"
 title: "TIL: Destructuring function arguments in JavaScript"
-metaTitle: ""
+metaTitle: "Today I learned how to destructure function arguments in JavaScript"
 metaDescription: ""
 date: "2016-07-22"
 twitterImage: ""
