@@ -8,12 +8,12 @@ const items = [
     text: "Home",
   },
   {
-    to: "/about-me",
-    text: "About",
-  },
-  {
     to: "/projects",
     text: "Projects",
+  },
+  {
+    to: "/about-me",
+    text: "About",
   },
   {
     to: "/resources",
@@ -48,7 +48,7 @@ export const Header = () => {
   return (
     <>
       <header className="bg-white header-nav">
-        <nav className="mw8 center">
+        <nav className="mobile-container mw8 center">
           {/* mobile menu */}
           <div
             className="dn-ns dib white pointer pt3 pl3"
@@ -89,21 +89,21 @@ export const Header = () => {
         {transitions.map(
           ({ item, key, props }) =>
             item && (
-              <animated.div
-                key={key}
-                style={props}
-                className="header-mobile-menu"
-              >
-                <div onClick={() => setShow(false)} className="pointer pa3">
-                  <img src="/close.svg" height="26" width="26" />
-                </div>
-                {trail.map((props, index) => (
-                  <div className="db tc" key={items[index].to}>
-                    <HeaderLink to={items[index].to}>
-                      {items[index].text}
-                    </HeaderLink>
+              <animated.div key={key} style={props}>
+                <div className="header-mobile-menu">
+                  <div onClick={() => setShow(false)} className="pointer pa3">
+                    <img src="/close.svg" height="26" width="26" />
                   </div>
-                ))}
+                  {trail.map((props, index) => (
+                    <a
+                      href={items[index].to}
+                      key={items[index].to}
+                      className="mobile-menu-item"
+                    >
+                      {items[index].text}
+                    </a>
+                  ))}
+                </div>
               </animated.div>
             )
         )}
@@ -115,7 +115,6 @@ export const Header = () => {
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
           z-index: 2;
         }
-
         .header-mobile-menu {
           position: fixed;
           top: 0;
@@ -123,6 +122,15 @@ export const Header = () => {
           bottom: 0;
           left: 0;
           z-index: 10;
+          background: white;
+        }
+        .mobile-container {
+          height: 3.5rem;
+        }
+        .mobile-menu-item {
+          display: block;
+          text-align: center;
+          padding: 1rem;
         }
       `}</style>
     </>
