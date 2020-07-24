@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { twitterUrl, githubUrl, linkedinUrl, devToUrl } from "../utils/social";
+import { primary } from "../theme/colors";
 
 export const Footer = () => {
   return (
@@ -58,7 +59,7 @@ export const Footer = () => {
         }
         .greeting {
           font-weight: bold;
-          background-color: #60c1a9;
+          background-color: ${primary};
           padding: 0 1rem;
           border-radius: 3rem;
           color: #fff;

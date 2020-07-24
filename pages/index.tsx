@@ -38,7 +38,10 @@ const Home: NextPage<Props> = ({ articles, series }) => {
           <div className="work-pager-background-ns" />
           <div className="work-page-ns">
             <div className="w-100 fl-ns w-30-ns pt4 mh-100">
-              <img src="/images/lets-garden-app-journal-screen.png" />
+              <img
+                src="/images/lets-garden-app-journal-screen.png"
+                alt="Screenshot of journal screen in the Let's Garden iOS app"
+              />
             </div>
             <div className="w-100 fr-ns w-70-ns pl6">
               <p className="pt6 f3 b white">Recent Project:</p>
@@ -54,7 +57,10 @@ const Home: NextPage<Props> = ({ articles, series }) => {
           </div>
         </div>
         <div className="db dn-ns">
-          <img src="/images/lets-garden-app-journal-screen.png" />
+          <img
+            src="/images/lets-garden-app-journal-screen.png"
+            alt="Screenshot of journal screen in the Let's Garden iOS app"
+          />
           <div className={`work-page bg-white tc w-100`}>
             <p className="f3 b">Recent Project: Let's Garden</p>
             <p className="f5">A simple garden journal app for iOS.</p>
