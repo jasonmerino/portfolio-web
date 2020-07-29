@@ -1,6 +1,25 @@
-import React from "react";
+import React, { FC } from "react";
+import moment from "moment";
+import { dark2 } from "../theme/colors";
 
-export default () => {
+export const getStaticProps = async () => {
+  const response = await fetch(
+    "https://api.github.com/users/jasonmerino/repos?sort=updated"
+  );
+  const repos = await response.json();
+
+  return {
+    props: {
+      repos,
+    },
+  };
+};
+
+interface Props {
+  repos: any[];
+}
+
+const Projects: FC<Props> = ({ repos }) => {
   return (
     <>
       <div className="pa3">
@@ -85,6 +104,49 @@ export default () => {
         </div>
       </div>
       <div className="cf" />
+      <h2>Source Codes</h2>
+      <p>
+        Even though I don't currently use Github during my full time job, I
+        still try and contribute here and there. Here are some of the repos that
+        I've worked with recently.
+      </p>
+      {repos.map((repo) => {
+        if (repo.fork) {
+          return null;
+        }
+        return (
+          <div key={repo.id}>
+            <p>
+              <a href={repo.html_url} className="repo">
+                {repo.full_name}
+              </a>
+              <br />
+              {repo.description && (
+                <>
+                  {repo.description}
+                  <br />
+                </>
+              )}
+              <span className="timestamp">
+                Updated {moment(repo.updated_at).fromNow()}
+              </span>
+            </p>
+          </div>
+        );
+      })}
+      <style jsx>
+        {`
+          .repo {
+            font-weight: bold;
+          }
+          .timestamp {
+            color: ${dark2};
+            font-size: 0.8rem;
+          }
+        `}
+      </style>
     </>
   );
 };
+
+export default Projects;
