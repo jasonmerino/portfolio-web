@@ -104,36 +104,38 @@ const Projects: FC<Props> = ({ repos }) => {
         </div>
       </div>
       <div className="cf" />
-      <h2>Source Codes</h2>
-      <p>
-        Even though I don't currently use Github during my full time job, I
-        still try and contribute here and there. Here are some of the repos that
-        I've worked with recently.
-      </p>
-      {repos.map((repo) => {
-        if (repo.fork) {
-          return null;
-        }
-        return (
-          <div key={repo.id}>
-            <p>
-              <a href={repo.html_url} className="repo">
-                {repo.full_name}
-              </a>
-              <br />
-              {repo.description && (
-                <>
-                  {repo.description}
-                  <br />
-                </>
-              )}
-              <span className="timestamp">
-                Updated {moment(repo.updated_at).fromNow()}
-              </span>
-            </p>
-          </div>
-        );
-      })}
+      <div className="pa3">
+        <h2>Source Codes</h2>
+        <p>
+          Even though I don't currently use Github during my full time job, I
+          still try and contribute here and there. Here are some of the repos
+          that I've worked with recently.
+        </p>
+        {repos.map((repo) => {
+          if (repo.fork) {
+            return null;
+          }
+          return (
+            <div key={repo.id}>
+              <p>
+                <a href={repo.html_url} className="repo">
+                  {repo.full_name}
+                </a>
+                <br />
+                {repo.description && (
+                  <>
+                    {repo.description}
+                    <br />
+                  </>
+                )}
+                <span className="timestamp">
+                  Updated {moment(repo.updated_at).fromNow()}
+                </span>
+              </p>
+            </div>
+          );
+        })}
+      </div>
       <style jsx>
         {`
           .repo {
