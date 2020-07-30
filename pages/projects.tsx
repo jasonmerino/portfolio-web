@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import moment from "moment";
 import { dark2 } from "../theme/colors";
+import { Pill } from "../components/pill";
+import { space3Px, space2Px } from "../theme/space";
 
 export const getStaticProps = async () => {
   const response = await fetch(
@@ -131,6 +133,7 @@ const Projects: FC<Props> = ({ repos }) => {
                 <span className="timestamp">
                   Updated {moment(repo.updated_at).fromNow()}
                 </span>
+                {repo.language && <Pill>{repo.language}</Pill>}
               </p>
             </div>
           );
@@ -144,6 +147,7 @@ const Projects: FC<Props> = ({ repos }) => {
           .timestamp {
             color: ${dark2};
             font-size: 0.8rem;
+            margin-right: ${space2Px};
           }
         `}
       </style>
