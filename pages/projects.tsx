@@ -2,7 +2,8 @@ import React, { FC } from "react";
 import moment from "moment";
 import { dark2 } from "../theme/colors";
 import { Pill } from "../components/pill";
-import { space3Px, space2Px } from "../theme/space";
+import { space2Px } from "../theme/space";
+import { HTMLHead } from "../components/html-head";
 
 export const getStaticProps = async () => {
   const response = await fetch(
@@ -24,6 +25,11 @@ interface Props {
 const Projects: FC<Props> = ({ repos }) => {
   return (
     <>
+      <HTMLHead
+        metaTitle="Recent projects"
+        metaDescription="Here are a few different projects that I've worked on in my spare time."
+        canonical="/projects"
+      />
       <div className="pa3">
         <h1>Projects</h1>
         <div className="fl w-30-ns">

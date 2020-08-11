@@ -4,6 +4,7 @@ import { FC } from "react";
 import { AppProps } from "next/app";
 import { Header } from "../components/header";
 import { Footer } from "../components/footer";
+import { primary } from "../theme/colors";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -38,7 +39,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         }
 
         a {
-          color: #356d5f;
+          color: ${primary};
         }
 
         #__next {

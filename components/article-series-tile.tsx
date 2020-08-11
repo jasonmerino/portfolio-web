@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Link from "next/link";
 import { slugify } from "../utils/string";
+import { primary } from "../theme/colors";
 
 interface Props {
   title: string;
@@ -19,6 +20,7 @@ export const ArticleSeriesTile: FC<Props> = ({ title }) => {
           cursor: pointer;
           padding: 0.5rem 1rem;
           width: 100%;
+          color: ${primary};
         }
       `}</style>
     </>
