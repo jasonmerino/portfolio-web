@@ -64,10 +64,6 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
           color: #fff;
         }
 
-        .color-lets-garden {
-          color: #60c1a9;
-        }
-
         .shadow-1-hover:hover {
           box-shadow: 0 0 20px #e8e8e8;
         }
