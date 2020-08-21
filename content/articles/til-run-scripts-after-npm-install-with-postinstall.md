@@ -6,6 +6,9 @@ metaTitle: "Today I learned how to run scripts after npm install with postinstal
 metaDescription: ""
 date: "2017-05-25"
 twitterImage: ""
+tags:
+  - JavaScript
+  - NPM
 ---
 
 So check this out! If you have a function that accepts an object as an argument and you don't want pull each of the properties of that argument out one by one, what a hassle, right?, you can destructure the argument in the function argument signature to access each of the arguments properties directly.

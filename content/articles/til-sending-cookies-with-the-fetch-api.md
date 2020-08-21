@@ -6,6 +6,9 @@ metaTitle: "Today I learned how to send cookies with the fetch API in JS"
 metaDescription: ""
 date: "2018-01-22"
 twitterImage: ""
+tags:
+  - JavaScript
+  - cookies
 ---
 
 Today I was trying desperately to create a login form for a side project I'm working on and I could not get the session to persist from page load to page load in [Express](http://expressjs.com/). I was doing the authentication via an ajax call, so naturally I was attempting to force the session to persist with req.session.save(), but that wasn't working either.

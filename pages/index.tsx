@@ -81,7 +81,7 @@ const Home: NextPage<Props> = ({ articles, series }) => {
         <h2 className="mt5 ml3">Recent Articles</h2>
         <div className="flex flex-row flex-wrap">
           {articles.map((article: ArticleMeta) => {
-            const { title, draft, date, path, series } = article;
+            const { title, draft, date, path, series, tags } = article;
             if (draft || series) {
               return null;
             }
@@ -91,6 +91,7 @@ const Home: NextPage<Props> = ({ articles, series }) => {
                 title={title}
                 date={date}
                 href={`/articles${path}`}
+                tags={tags}
               />
             );
           })}

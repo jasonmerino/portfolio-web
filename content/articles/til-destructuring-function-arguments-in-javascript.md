@@ -6,6 +6,9 @@ metaTitle: "Today I learned how to destructure function arguments in JavaScript"
 metaDescription: ""
 date: "2016-07-22"
 twitterImage: ""
+tags:
+  - JavaScript
+  - ES6
 ---
 
 # TIL: Destructuring function arguments in JavaScript
@@ -14,20 +17,20 @@ So check this out! If you have a function that accepts an object as an argument 
 
 Here it is in action.
 
-```
+```ts
 // the arguments below are the destructured parts
 // notice how there's what looks like an object in the parens
 function printDestructuredArgument({ one, two }) {
-  console.log(one) // option one
-  console.log(two) // option two
+  console.log(one); // option one
+  console.log(two); // option two
 }
 
 const args = {
-  one: 'option one',
-  two: 'option two',
-}
+  one: "option one",
+  two: "option two",
+};
 
-printDestructuredArgument(args)
+printDestructuredArgument(args);
 ```
 
 How cool is that?!

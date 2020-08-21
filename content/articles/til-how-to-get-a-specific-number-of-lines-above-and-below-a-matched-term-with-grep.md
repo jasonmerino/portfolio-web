@@ -6,6 +6,8 @@ metaTitle: "Today I learned how to get a specific number of lines above and belo
 metaDescription: "Today I learned how to set the number of lines to show above and below a matching term when using grep."
 date: "2016-05-04"
 twitterImage: ""
+tags:
+  - grep
 ---
 
 ## Back Story

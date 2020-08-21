@@ -6,6 +6,9 @@ metaTitle: "Today I learned how to edit font metadata with TTX"
 metaDescription: "In this article we go over a way to edit font metadata with the Python library fonttools."
 date: "2016-10-02"
 twitterImage: ""
+tags:
+  - Python
+  - fonts
 ---
 
 Today I needed to change the Full Name propery of a .ttf font file I was working with. After some searching around the interwebs I found [TTX](https://github.com/behdad/fonttools/), a script written in [Python](https://www.python.org/) which converts your font file to [XML](https://en.wikipedia.org/wiki/XML) so that you can edit it's properties and then will convert it back into a font.

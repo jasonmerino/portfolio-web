@@ -6,6 +6,9 @@ metaTitle: "Use invoke to change properties on each model in Backbone collection
 metaDescription: ""
 date: "2014-10-03"
 twitterImage: ""
+tags:
+  - JavaScript
+  - Backbone.js
 ---
 
 Here's a quick tip. If you need to set the same property on each model in a Backbone collection check out the following snippet.

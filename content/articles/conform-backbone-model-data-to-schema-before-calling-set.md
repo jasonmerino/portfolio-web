@@ -6,6 +6,9 @@ metaTitle: "How to conform a Backbone model to the schema before calling set"
 metaDescription: "Today we're going to learn how to make sure that the data we're passing to a Backbone model is of the type that a model expects before calling the set function."
 date: "2014-11-23"
 twitterImage: ""
+tags:
+  - JavaScript
+  - Backbone.js
 ---
 
 When doing basic [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) on Backbone models there can be instances when it is helpful to have a defined schema for model properties. Since properly typing data is not something that JavaScript is particularly good at it is even more important to find repeatable patterns which help keep application logic less error prone.

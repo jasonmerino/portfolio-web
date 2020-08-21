@@ -6,6 +6,9 @@ metaTitle: "Today I learned about the object spread operator in JS"
 metaDescription: ""
 date: "2015-12-11"
 twitterImage: ""
+tags:
+  - JavaScript
+  - ES6
 ---
 
 The JavaScript spread operator is awesome! Previously when I wanted to merge two objects I would have to pull in [underscore](http://underscorejs.org/) or [lodash](https://lodash.com/) and do something like this.

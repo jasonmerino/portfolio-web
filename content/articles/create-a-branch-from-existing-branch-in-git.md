@@ -6,6 +6,8 @@ metaTitle: "How to create a new branch from an existing branch in git"
 metaDescription: "Learn how to create a new branch from an existing branch no matter what branch you currently have checked out."
 date: "2014-06-03"
 twitterImage: ""
+tags:
+  - git
 ---
 
 TL;DR; The command you need is `git checkout -b new-branch existing-branch`

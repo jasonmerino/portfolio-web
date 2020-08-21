@@ -6,6 +6,9 @@ metaTitle: "Getting Cozy with useQuery and useMutation"
 metaDescription: "Take some time to explore the new React hooks inside the Apollo Client."
 date: "2019-09-20"
 twitterImage: ""
+tags:
+  - GraphQL
+  - React.js
 ---
 
 ## Apollo Client and React hooks together at last!

@@ -6,6 +6,9 @@ metaTitle: "My new open source project react-native-simple-store"
 metaDescription: ""
 date: "2015-10-09"
 twitterImage: ""
+tags:
+  - JavaScript
+  - React Native
 ---
 
 I just recently started working with React Native and right away I had a use for the AsyncStorage utility. The folks at Facebook suggest that you wrap AsyncStorage if you are going to be using it extensively since it operates globally. Here's what it says in the docs.
