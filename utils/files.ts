@@ -5,6 +5,7 @@ import { slugify } from "./string";
 
 export interface ArticleData {
   path: string;
+  content: string;
   data: ArticleMeta;
 }
 
@@ -18,11 +19,12 @@ export const getArticlesData = (): ArticleData[] => {
   const articlesDir = fs.readdirSync("content/articles");
   return articlesDir
     .map((article) => {
-      const { data } = parseMarkdownFile<ArticleMeta>(
+      const { data, content } = parseMarkdownFile<ArticleMeta>(
         `content/articles/${article}`
       );
       return {
         path: article,
+        content,
         data,
       };
     })

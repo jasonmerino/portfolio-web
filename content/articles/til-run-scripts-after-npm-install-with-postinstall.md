@@ -3,7 +3,7 @@ type: "article"
 path: "/til-run-scripts-after-npm-install-with-postinstall"
 title: "TIL: Run scripts after npm install with postinstall"
 metaTitle: "Today I learned how to run scripts after npm install with postinstall"
-metaDescription: ""
+metaDescription: "Today I learned how to run scripts after npm install with the package.json's scripts.postinstall property."
 date: "2017-05-25"
 twitterImage: ""
 tags:
