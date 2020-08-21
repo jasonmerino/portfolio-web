@@ -32,7 +32,7 @@ export const getStaticProps = (context) => {
       metaDescription,
       metaTitle,
       date,
-      tags,
+      tags: tags || [],
     },
   };
 };
