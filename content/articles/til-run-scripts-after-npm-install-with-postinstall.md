@@ -11,24 +11,22 @@ tags:
   - NPM
 ---
 
-So check this out! If you have a function that accepts an object as an argument and you don't want pull each of the properties of that argument out one by one, what a hassle, right?, you can destructure the argument in the function argument signature to access each of the arguments properties directly.
+The other day when I was upgrading React Native I ran into this issue here. Basically, there was a naming collision between files in the fbjs dependency which was scattered throughout a few different dependencies I had in my project.
 
-Here it is in action.
+I quickly found I could resolve this issue by installing fbjs as one of my own dependencies and then going through and removing all the other instances so at runtime the code would reference the top level insance of fbjs. However, after doing this twice manually I decided this needed to be automated. I'm kind of lazy... in a good way...
 
-```
-// the arguments below are the destructured parts
-// notice how there's what looks like an object in the parens
-function printDestructuredArgument({ one, two }) {
-  console.log(one) // option one
-  console.log(two) // option two
+This is when I found out about postinstall scripts in NPM. The npm documentation site says that postinstall will "run AFTER the package is installed." Now, I'm not sure if this was intended for just modules that you release on NPM for others to use, but it also works in your own project. Here's a sample from my package.json file with the postinstall script to remove all other versions of fbjs.
+
+```json
+{
+  ...
+  "scripts": {
+    ...
+    "postinstall": "find . -name 'fbjs' -print | grep \"\\./node_modules/fbjs\" -v | xargs rm -rf",
+    ...
+  },
+  ...
 }
-
-const args = {
-  one: 'option one',
-  two: 'option two',
-}
-
-printDestructuredArgument(args)
 ```
 
-How cool is that?!
+That's it! You can easily define scripts to run right after every npm install. Who knew?
