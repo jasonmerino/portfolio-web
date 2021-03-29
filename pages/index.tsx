@@ -5,13 +5,15 @@ import { NextPage } from "next";
 import { ArticleSeriesTile } from "../components/article-series-tile";
 import { getArticlesData, getSeriesData } from "../utils/files";
 import { HTMLHead } from "../components/html-head";
+import { generateRss } from "../utils/rss";
+import fs from "fs";
 
 interface Props {
   articles: ArticleMeta[];
   series: string[];
 }
 
-export const getStaticProps = () => {
+export const getStaticProps = async () => {
   const articles = getArticlesData();
   const series = getSeriesData();
 
@@ -19,6 +21,10 @@ export const getStaticProps = () => {
     articles: articles.map((article) => article.data),
     series: series.map((current) => current.title),
   };
+
+  // use this function to generate the RSS feed
+  const rss = await generateRss(articles.map((article) => article.data));
+  fs.writeFileSync("./public/rss.xml", rss);
 
   return {
     props,
