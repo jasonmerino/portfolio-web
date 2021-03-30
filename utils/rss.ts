@@ -28,7 +28,7 @@ export async function generateRss(articlesMeta: ArticleMeta[]) {
         ).toUTCString()}</lastBuildDate>
         <atom:link href="${
           config.topLevelDomain
-        }" rel="self" type="application/rss+xml"/>
+        }/rss.xml" rel="self" type="application/rss+xml"/>
         ${itemsList.join("")}
       </channel>
     </rss>
