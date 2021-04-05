@@ -9,6 +9,9 @@ export async function generateRssItem(article: ArticleMeta) {
       <description>${article.metaDescription}</description>
       <link>${config.topLevelDomain}/articles${article.path}</link>
       <pubDate>${new Date(article.date).toUTCString()}</pubDate>
+      ${article.tags ? article.tags.map((tag) => {
+        return `<category>${tag}</category>`;
+      }).join(""): ''}
     </item>
   `;
 }
