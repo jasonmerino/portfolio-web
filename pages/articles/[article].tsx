@@ -79,11 +79,11 @@ const ArticleTemplate: FC<Props> = ({
         </div>
         <ReactMarkdown
           className="blog-post-content"
-          source={content}
-          renderers={{
-            code: Code,
+          components={{
+            code: ({ children}) => <Code value={children} />,
+            pre: ({ children}) => <Code value={children} />,
           }}
-        />
+        >{content}</ReactMarkdown>
       </article>
       <Author />
     </>
