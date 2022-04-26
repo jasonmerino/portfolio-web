@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: jasonmerino.me
+Token: 34be3344bc0e596423fe0b1e305451e4c3ce0ffe1e7e8615b95d9873cb83093e
